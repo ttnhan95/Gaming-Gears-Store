@@ -1,14 +1,39 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>GamingGearsStore</title>
-    <%= csrf_meta_tags %>
+<head>
+  <title>Gaming Gear Store</title>
+  <%= stylesheet_link_tag    "application", media: "all",
+                             "data-turbolinks-track" => 'reload' %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => 'reload' %>
+  <%= csrf_meta_tags %>
+</head>
+<body class="<%= controller.controller_name %>">
+<div id="banner">
+  <%= image_tag 'https://img.fnatic.io/da1319e5-0bba-489a-b037-130a39f18b4e%2FGear-Logo-Horizontal-B.png?s=5b22d9641b5ae1471ed047fd59abb47a', alt: 'Gaming Gear Store' %>
+  <span class="title"><%= @page_title %></span>
+</div>
+<div id="columns">
+  <div id="side">
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+    <ul>
+      <li><a href="/"><%= t('.home') %></a></li>
+      <li><a href="/faq"><%= t('.questions') %></a></li>
+      <li><a href="/news"><%= t('.news') %></a></li>
+      <li><a href="/contact"><%= t('.contact') %></a></li>
+    </ul>
 
-  <body>
+    <% if session[:user_id] %>
+        <ul>
+          <li><%= link_to 'Orders',   orders_path   %></li>
+          <li><%= link_to 'Products', products_path %></li>
+          <li><%= link_to 'Users',    users_path    %></li>
+        </ul>
+        <%= button_to 'Logout', logout_path, method: :delete   %>
+    <% end %>
+  </div>
+  <div id="main">
     <%= yield %>
-  </body>
+  </div>
+</div>
+</body>
 </html>
