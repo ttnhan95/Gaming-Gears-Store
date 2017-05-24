@@ -1,3 +1,23 @@
+require './app/models/store'
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  match 'catalog' => Store.new, via: :all
+  get 'admins' => 'admins#index'
+  controller :sessions do
+    get  'login' => :login
+    post 'login' => :create
+    delete 'logout' => :destroy
+  end
+
+  resources :users
+  resources :products do
+    get :who_bought, on: :member
+  end
+
+  scope '(:locale)' do
+    resources :orders
+    resources :categories
+    resources :cart_products
+    resources :carts
+    root 'store#index', as: 'store_index', via: :all
+  end
 end
