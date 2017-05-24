@@ -69,6 +69,13 @@ class OrdersController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def order_params
-    params.fetch(:order, {})
+    params.require(:order).permit(:name, :address, :email, :pay_type)
+  end
+
+  private
+  def ensure_cart_isnt_empty
+    if @cart.line_items.empty?
+      redirect_to store_index_url, notice: 'Your cart is empty'
+    end
   end
 end
