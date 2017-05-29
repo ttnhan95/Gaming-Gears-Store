@@ -7,8 +7,10 @@ Rails.application.routes.draw do
     post 'login' => :create
     delete 'logout' => :destroy
   end
-
+  root 'products#index'
+  resources :searches
   resources :users
+  resources :products
   resources :products do
     get :who_bought, on: :member
   end

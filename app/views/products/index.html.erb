@@ -2,6 +2,12 @@
 
 <h1>Products</h1>
 
+  <%= form_tag products_path, :method => 'get' do %>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search" %>
+  <% end %>
+
+  <%= link_to "Advanced Search", new_search_path %>
 <table>
 <% @products.each do |product| %>
   <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
