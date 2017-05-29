@@ -55,3 +55,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'activemodel-serializers-xml'
 
 gem 'haml', '~> 4.0'
+gem 'bootstrap-sass'

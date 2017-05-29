@@ -1,0 +1,22 @@
+<h1>Search Result</h1>
+
+<p><%= link_to 'Back', new_search_path %></p>
+
+<% if @search.search_products.empty? %>
+	<p>No Products Found</p>
+	
+<% else %>
+	<% @search.search_products.each do |p| %>
+		<br>
+
+		<div class="div">
+			<h1><%= p.name %></h1>
+			<p>Price: $<%= p.price %></p>
+			<p>Category: $<%# p.category %></p> 
+			<<p>ISBN: $<%# p.isbn %></p> 
+			<p>Image: <%= p.image_url %></p>
+		</div>
+
+		<% end %>
+
+<% end %>
