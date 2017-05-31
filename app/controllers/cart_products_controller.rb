@@ -1,4 +1,7 @@
 class CartProductsController < ApplicationController
+  skip_before_action :authorize, only: :create
+  include CurrentCart
+  before_action :set_cart, only: [:create]
   before_action :set_cart_product, only: [:show, :edit, :update, :destroy]
 
   # GET /cart_products
@@ -24,11 +27,13 @@ class CartProductsController < ApplicationController
   # POST /cart_products
   # POST /cart_products.json
   def create
-    @cart_product = CartProduct.new(cart_product_params)
+    product = Product.find(params[:product_id])
+    @cart_product = @cart.add_product(product)
 
     respond_to do |format|
       if @cart_product.save
-        format.html { redirect_to @cart_product, notice: 'Cart product was successfully created.' }
+        format.html { redirect_to store_index_url }
+        format.js   { @current_item = @cart_product }
         format.json { render :show, status: :created, location: @cart_product }
       else
         format.html { render :new }
@@ -69,6 +74,6 @@ class CartProductsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def cart_product_params
-    params.fetch(:cart_product, {})
+    params.require(:cart_product).permit(:product_id)
   end
 end

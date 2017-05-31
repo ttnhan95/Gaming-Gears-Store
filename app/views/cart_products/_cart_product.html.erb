@@ -1,0 +1,9 @@
+<% if cart_product == @current_item %>
+<tr id="current_item">
+<% else %>
+<tr>
+<% end %>
+  <td><%= cart_product.quantity %>&times;</td>
+  <td><%= cart_product.product.name %></td>
+  <td class="item_price"><%= number_to_currency(cart_product.total_price) %></td>
+</tr>
