@@ -56,3 +56,4 @@ gem 'activemodel-serializers-xml'
 
 gem 'haml', '~> 4.0'
 gem 'bootstrap-sass'
+gem 'kaminari', '~> 0.16'
