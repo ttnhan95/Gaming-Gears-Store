@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<%= image_tag(@product.image_url) %>
+
 <p>
   <strong>Title:</strong>
   <%= @product.name %>
@@ -11,8 +13,17 @@
 </p>
 
 <p>
-  <strong>Image url:</strong>
-  <%= @product.image_url %>
+  <strong>Category:</strong>
+  <% @categories.each do |category| %>
+      <% if @product.category_id == category.id %>
+          <%= category.title %>
+      <% end %>
+  <% end %>
+</p>
+
+<p>
+  <strong>Manufacturer:</strong>
+  <%= @product.manufacturer %>
 </p>
 
 <p>

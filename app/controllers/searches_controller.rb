@@ -1,4 +1,5 @@
 class SearchesController < ApplicationController
+	skip_before_action :authorize, only: [:create, :show]
 	def new
 		@search = Search.new
 		#@categories = Product.uniq.pluck(:category)

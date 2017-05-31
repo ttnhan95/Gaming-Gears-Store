@@ -19,6 +19,12 @@
     <td class="list_description">
       <dl>
         <dt><%= product.name %></dt>
+        <% @categories.each do |category| %>
+            <% if product.category_id == category.id %>
+                <dt><%= category.title %></dt>
+            <% end %>
+        <% end %>
+        <dt><%= product.manufacturer %></dt>
         <dd><%= truncate(strip_tags(product.description),
                length: 80) %></dd>
       </dl>

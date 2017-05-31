@@ -14,6 +14,7 @@ class CategoriesController < ApplicationController
 
   # GET /categories/new
   def new
+    @categories = Category.all
     @category = Category.new
   end
 
@@ -69,6 +70,6 @@ class CategoriesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def category_params
-    params.fetch(:category, {})
+    params.require(:category).permit(:title)
   end
 end

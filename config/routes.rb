@@ -7,14 +7,14 @@ Rails.application.routes.draw do
     post 'login' => :create
     delete 'logout' => :destroy
   end
-  #root 'products#index'
-  resources :searches
+  #root 'products#index
   resources :users
   resources :products do
     get :who_bought, on: :member
   end
 
   scope '(:locale)' do
+    resources :searches
     resources :orders
     resources :categories
     resources :cart_products
