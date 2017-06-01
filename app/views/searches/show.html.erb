@@ -4,19 +4,35 @@
 
 <% if @search.search_products.empty? %>
 	<p>No Products Found</p>
-	
+
 <% else %>
-	<% @search.search_products.each do |p| %>
-		<br>
 
-		<div class="div">
-			<h1><%= p.name %></h1>
-			<p>Price: $<%= p.price %></p>
-			<p>Category: $<%# p.category %></p> 
-			<<p>ISBN: $<%# p.isbn %></p> 
-			<p>Image: <%= p.image_url %></p>
-		</div>
+    <table>
+      <% @search.search_products.each do |product| %>
+          <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
 
-		<% end %>
+            <td>
+              <%= image_tag(product.image_url, class: 'list_image') %>
+            </td>
+
+            <td class="list_description">
+              <dl>
+                <dt><dt><%= link_to product.name, product %></dt></dt>
+                <% @categories.each do |category| %>
+                    <% if product.category_id == category.id %>
+                        <dt><%= category.title %></dt>
+                    <% end %>
+                <% end %>
+                <dt><%= product.manufacturer %></dt>
+                <dd><%= truncate(strip_tags(product.description),
+                                 length: 80) %></dd>
+              </dl>
+            </td>
+
+          </tr>
+      <% end %>
+    </table>
+
+
 
 <% end %>

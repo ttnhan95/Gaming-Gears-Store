@@ -8,8 +8,12 @@
 	</div>
 
 	<div class="field">
-		<%= s.label :category %> <br />
-		<%# s.text_field :category, options_for_select(@categories), :include_blank => true %>
+    <%= s.label :category_id %>
+    <select name="search[category_id]" id="search_category_id">
+      <% @categories.each do |category| %>
+          <option value="<%= category.id %>"><%= category.title %></option>
+      <% end %>
+    </select>
 	</div>
 
 	<div class="field">

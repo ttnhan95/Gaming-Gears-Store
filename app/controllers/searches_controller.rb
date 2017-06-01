@@ -1,8 +1,8 @@
 class SearchesController < ApplicationController
-	skip_before_action :authorize, only: [:create, :show]
+	skip_before_action :authorize, only: [:create, :show, :new]
 	def new
 		@search = Search.new
-		#@categories = Product.uniq.pluck(:category)
+		@categories = Category.all
 	end
 
 	def create
@@ -12,12 +12,13 @@ class SearchesController < ApplicationController
 
 	def show
 		@search = Search.find(params[:id])
+		@categories = Category.all
 	end
 
 	private
 
 	def search_params
-		params.require(:search).permit(:keywords, :category, :min_price, :max_price, :isbn)
+		params.require(:search).permit(:keywords, :category_id, :min_price, :max_price, :isbn)
 		
 	end
 end
