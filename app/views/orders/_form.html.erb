@@ -1,4 +1,5 @@
-<%= form_for(order) do |f| %>
+<div style="margin-left:60px;">
+  <%= form_for(order) do |f| %>
   <% if order.errors.any? %>
     <div id="error_explanation">
       <h2><%=raw t('errors.template.header', count: @order.errors.count,
@@ -14,33 +15,35 @@
   <% end %>
 <!-- ... -->
 
-  <div class="field">
+  <div class="form-group row col-md-7">
     <%= f.label :name, t('.name') %>
-    <%= f.text_field :name, size: 40 %>
+    <%= f.text_field :name, size: 40, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group row col-md-7">
     <%= f.label :address, t('.address_html') %>
-    <%= f.text_area :address, rows: 3, cols: 40 %>
+    <%= f.text_area :address, rows: 3, cols: 40, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group row col-md-7">
     <%= f.label :email, t('.email') %>
-    <%= f.email_field :email, size: 40 %>
+    <%= f.email_field :email, size: 40, class: 'form-control' %>
   </div>
 
-   <div class="field">
+   <div class="form-group row col-md-7">
      <%= f.label :phone, "Phone Number" %>
-     <%= f.text_field :phone, size: 40 %>
+     <%= f.text_field :phone, size: 40, class: 'form-control' %>
    </div>
 
-  <div class="field">
+  <div class="form-group row col-md-7">
     <%= f.label :payment_method, t('.pay_type') %>
     <%= f.select :payment_method, Order.payment_methods.keys,
                   prompt: t('.pay_prompt_html') %>
   </div>
 
-  <div class="actions">
+  <div class="actions row col-md-7">
     <%= f.submit t('.submit') %>
   </div>
 <% end %>
+
+</div>

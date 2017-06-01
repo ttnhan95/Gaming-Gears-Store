@@ -1,4 +1,4 @@
-<div class="depot_form">
+<div style="margin-left:60px;">
 
 <%= form_for @category do |f| %>
   <% if @category.errors.any? %>
@@ -14,15 +14,14 @@
   <% end %>
 
   <fieldset>
-  <legend>Enter User Details</legend>
 
-  <div class="field">
+  <div class="form-group row col-md-7">
     <%= f.label :title, 'Title:' %>
-    <%= f.text_field :title, size: 40 %>
+    <%= f.text_field :title, size: 40, class: 'form-control' %>
   </div>
 
 
-  <div class="actions">
+  <div class="actions row col-md-7">
     <%= f.submit %>
   </div>
 

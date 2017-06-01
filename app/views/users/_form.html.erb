@@ -1,4 +1,4 @@
-<div class="depot_form">
+<div style="margin-left:60px;">
 
 <%= form_for @user do |f| %>
   <% if @user.errors.any? %>
@@ -16,22 +16,22 @@
   <fieldset>
   <legend>Enter User Details</legend>
 
-  <div class="field">
+  <div class="form-group row col-md-7">
     <%= f.label :name, 'Name:' %>
-    <%= f.text_field :name, size: 40 %>
+    <%= f.text_field :name, size: 40, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group row col-md-7">
     <%= f.label :password, 'Password:' %>
-    <%= f.password_field :password, size: 40 %>
+    <%= f.password_field :password, size: 40,class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group row col-md-7">
     <%= f.label :password_confirmation, 'Confirm:' %>
-    <%= f.password_field :password_confirmation, size: 40 %>
+    <%= f.password_field :password_confirmation, size: 40,class: 'form-control' %>
   </div>
 
-  <div class="actions">
+  <div class="actions col-md-7">
     <%= f.submit %>
   </div>
 
