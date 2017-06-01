@@ -11,7 +11,9 @@
 <nav class="navbar navbar-default navbar-fixed-top">
 
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">GGGEAR</a>
+      <a href="/">
+      <%= image_tag("logo.png", :size=>'150x50') %>
+      </a>
     </div>
     <ul class="nav navbar-nav navbar-right">
       <li><a href="/"><%= t('.home') %></a></li>
@@ -45,7 +47,7 @@
             <div class="panel-body">
               <%= form_tag "", :method => 'get', class: 'navbar-form' do %>
                 <div class="form-group">
-                  <%= text_field_tag :search, params[:search] %>
+                  <%= text_field_tag :search, params[:search], placeholder: '    Search Product' %>
                 </div>
                 <button type="submit" class="btn btn-default "><span class="glyphicon glyphicon-search"></span></button>
               <% end %>
@@ -60,7 +62,7 @@
       <div class="side-menu-container">
 
         <% if session[:user_id] %>
-            <ul class="nav navbar-nav navbar-right" style="margin-top:51px;">
+            <ul class="nav navbar-nav navbar-right">
               <li><%= link_to 'Orders',   orders_path   %></li>
               <li><%= link_to 'Products', products_path %></li>
               <li><%= link_to 'Categories',    categories_path    %></li>

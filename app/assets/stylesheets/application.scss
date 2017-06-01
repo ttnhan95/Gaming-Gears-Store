@@ -692,3 +692,13 @@ img{width:100%}
 .brand-wrapper{
   margin-top:51px;
 }
+
+.navbar-header img{
+  width:auto !important;
+}
+
+.navbar-header a:hover{
+  text-decoration:none !important;
+  background: transparent!important;
+}
+
