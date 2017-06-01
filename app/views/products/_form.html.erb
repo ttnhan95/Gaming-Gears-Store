@@ -20,6 +20,7 @@
   <div class="field">
     <%= f.label :category_id %>
     <select name="product[category_id]" id="product_category_id">
+      <option value="">-- Select --</option>
     <% @categories.each do |category| %>
       <option value="<%= category.id %>"><%= category.title %></option>
     <% end %>

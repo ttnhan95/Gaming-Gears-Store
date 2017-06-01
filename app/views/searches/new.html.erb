@@ -10,6 +10,7 @@
 	<div class="field">
     <%= s.label :category_id %>
     <select name="search[category_id]" id="search_category_id">
+      <option value="">-- Select --</option>
       <% @categories.each do |category| %>
           <option value="<%= category.id %>"><%= category.title %></option>
       <% end %>

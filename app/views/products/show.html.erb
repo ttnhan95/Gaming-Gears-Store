@@ -1,35 +1,61 @@
 <p id="notice"><%= notice %></p>
 
-<%= image_tag(@product.image_url) %>
+<div class="container-fluid">
+  <div class="content-wrapper">
+    <div class="item-container">
+      <div class="container">
+        <div class="col-md-4">
+              <%= image_tag(@product.image_url) %>
+        </div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @product.name %>
-</p>
+        <div class="col-md-7">
+          <div class="product-title"><%= @product.name %></div>
+          <div class="product-desc">
+            <% @categories.each do |category| %>
+                <% if @product.category_id == category.id %>
+                    <%= category.title %>
+                <% end %>
+            <% end %>
+          </div>
+          <div class="product-desc"><%= @product.manufacturer %></div>
+          <hr>
+          <div class="product-price">$ <%= @product.price %></div>
+          <div class="product-stock">In Stock</div>
+          <hr>
+          <div class="btn-group cart">
+            <%= button_to 'Add to Cart', cart_products_path(product_id: @product, locale: I18n.locale, :html => {class: 'btn btn-success'}), remote: true %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="col-md-12 product-info">
+        <ul id="myTab" class="nav nav-tabs nav_tabs">
 
-<p>
-  <strong>Description:</strong>
-  <%= @product.description %>
-</p>
+          <li class="active"><a href="#service-one" data-toggle="tab">DESCRIPTION</a></li>
 
-<p>
-  <strong>Category:</strong>
-  <% @categories.each do |category| %>
-      <% if @product.category_id == category.id %>
-          <%= category.title %>
-      <% end %>
-  <% end %>
-</p>
+        </ul>
+        <div id="myTabContent" class="tab-content">
+          <div class="tab-pane fade in active" id="service-one">
 
-<p>
-  <strong>Manufacturer:</strong>
-  <%= @product.manufacturer %>
-</p>
+            <section class="container product-info">
+              <%= @product.description %>
+            </section>
 
-<p>
-  <strong>Price:</strong>
-  <%= @product.price %>
-</p>
+          </div>
+          <div class="tab-pane fade" id="service-two">
 
-<%= button_to 'Add to Cart', cart_products_path(product_id: @product, locale: I18n.locale), remote: true %> |
-<%= link_to 'Back', store_index_path %>
+            <section class="container">
+
+            </section>
+
+          </div>
+          <div class="tab-pane fade" id="service-three">
+
+          </div>
+        </div>
+        <hr>
+      </div>
+    </div>
+  </div>
+</div>
